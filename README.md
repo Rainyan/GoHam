@@ -1,6 +1,6 @@
 > [!IMPORTANT]
 > As it turns out, it appears most if not all tools that read GameConfig files support relative paths.
-> This realisation turns this entire project mostly obsolete, if all the paths your require are resolvable with relative paths.
+> This realisation turns this entire project mostly obsolete, if all the paths you require are resolvable with relative paths.
 >
 > As such, this project will be archived and is no longer maintained.
 > If you need the features of this app for your own projects, feel free to fork of course.
