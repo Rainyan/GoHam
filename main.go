@@ -9,6 +9,7 @@ import (
 	"io/fs"
 	"log"
 	"os"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -154,8 +155,10 @@ func printThirdPartyLicenses() error {
 
 // Entry point
 func main() {
-	SHOW_LICENSE_INFO = flag.Bool("license", false, "Show license information and exit.")
+	const licenseCmd = "license"
+	SHOW_LICENSE_INFO = flag.Bool(licenseCmd, false, "Show license information and exit.")
 	flag.Parse()
+	fmt.Printf("To see license information, use the command: %s -%s\n", filepath.Base(os.Args[0]), licenseCmd)
 
 	if *SHOW_LICENSE_INFO {
 		printThirdPartyLicenses()
