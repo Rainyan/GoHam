@@ -26,7 +26,7 @@ go build
 ## Usage
 * Build the executable
 * Make sure an up-to-date Steamworks SDK `steam_api64.dll` library exists in the same path
-  * More specifically, the Steamworks SDK dll version used should be the same as the one our `go-steamworks` [module version](https://github.com/Rainyan/GoHam/blob/c29f1f3060ec0e354ab82448dfbd7ba38417b26a/go.mod#L6) is targeting, which can be found at the [project README](https://github.com/hajimehoshi/go-steamworks?tab=readme-ov-file#steamworks-sdk-version).
+  * More specifically, the Steamworks SDK dll version used should be the same as the one our `go-steamworks` [pinned module version](https://github.com/Rainyan/GoHam/blob/c29f1f3060ec0e354ab82448dfbd7ba38417b26a/go.mod#L6) is targeting, which can be found at the [project README](https://github.com/hajimehoshi/go-steamworks?tab=readme-ov-file#steamworks-sdk-version).
 * Run the executable
 * Observe how `GameConfig.txt` was generated, or updated, in the executable folder.
 
