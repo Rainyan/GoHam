@@ -12,11 +12,15 @@ The executable can be run standalone, or as part of a Steam app [InstallScript](
 Pre-built releases are available at the [Releases page](https://github.com/Rainyan/GoHam/releases).
 
 ## Usage
-* Build the executable
-* Make sure an up-to-date Steamworks SDK `steam_api64.dll` library exists in the same path
+* Download the release build, or build the app yourself.
+* Make sure an up-to-date Steamworks SDK `steam_api64.dll` library exists in the same path as the `InitHammerGameConfig.exe` executable.
+  * The easiest way to do this is by copying the files `InitHammerGameConfig.exe` and `GameConfig.txt.pre` from the release to your `steamapps/common/NEOTOKYOREBUILD/bin/x64` folder.
   * More specifically, the Steamworks SDK dll version used should be the same as the one our `go-steamworks` [pinned module version](https://github.com/Rainyan/GoHam/blob/c29f1f3060ec0e354ab82448dfbd7ba38417b26a/go.mod#L6) is targeting, which can be found at the [project README](https://github.com/hajimehoshi/go-steamworks/blob/ea9c0844b066/README.md#steamworks-sdk-version). Assuming commit `ea9c0844b066` in this example but check our go.mod to be sure of the up-to-date version.
-* Run the executable
-* Observe how `GameConfig.txt` was generated, or updated, in the executable folder.
+* Make sure `base.fgd` and `halflife2.fgd` exist in the folder `steamapps/common/NEOTOKYOREBUILD/bin/x64`.
+  * At the time of writing this, you have to copy-paste them from `steamapps/common/NEOTOKYOREBUILD/bin` to the `x64` folder, but this should be fixed in the Steam release itself.
+* Run the `InitHammerGameConfig.exe` executable.
+* Observe how `GameConfig.txt` was generated from the `GameConfig.txt.pre` file, or it was updated if it already existed.
+* Run the `hammer.exe` executable in `steamapps/common/NEOTOKYOREBUILD/bin/x64`, and it should now be ready to use.
 
 ## Building
 The following is only needed if you wish to build this app from source code.
