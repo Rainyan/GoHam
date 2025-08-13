@@ -1,9 +1,12 @@
 package main
 
 import (
+	"embed"
 	"errors"
+	"flag"
 	"fmt"
 	"io"
+	"io/fs"
 	"log"
 	"os"
 	"regexp"
@@ -13,6 +16,10 @@ import (
 	"github.com/hajimehoshi/go-steamworks"
 	"github.com/noxer/ventil"
 )
+
+//go:embed LICENSES
+var VENDOR_LICENSES embed.FS
+var SHOW_LICENSE_INFO *bool
 
 // Initializes Steamworks API with the provided Steam AppID.
 func steamInPlaceInit(appid steamworks.AppId_t) error {
@@ -123,8 +130,38 @@ func validateCfgFormat(cfgPath string) error {
 	return nil
 }
 
+// Prints third-party software license information to stdout.
+func printThirdPartyLicenses() error {
+	fs.WalkDir(VENDOR_LICENSES, ".", func(path string, d fs.DirEntry, err error) error {
+		if !d.Type().IsRegular() {
+			return nil
+		}
+		f, err := VENDOR_LICENSES.Open(path)
+		if err != nil {
+			return err
+		}
+		defer f.Close()
+		licenseText, err := io.ReadAll(f)
+		if err != nil {
+			return err
+		}
+		fmt.Printf("\n\nLicense text for \"%s\":\n\n%s\n\n", d.Name(), licenseText)
+		fmt.Println("= = = = = = = = = = = = = = = = = = = =")
+		return nil
+	})
+	return nil
+}
+
 // Entry point
 func main() {
+	SHOW_LICENSE_INFO = flag.Bool("license", false, "Show license information and exit.")
+	flag.Parse()
+
+	if *SHOW_LICENSE_INFO {
+		printThirdPartyLicenses()
+		return
+	}
+
 	const appid = 3172910 // Steam AppID for "Neotokyo; Rebuild"
 	const cfgPathWrite = "GameConfig.txt"
 	const cfgPathRead = cfgPathWrite + ".pre"
