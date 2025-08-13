@@ -32,5 +32,5 @@ go build
 
 ## Acknowledgements
 This tool uses the following open-source software:
-* [go-steamworks](https://github.com/hajimehoshi/go-steamworks) - A Steamworks SDK binding for Go ([Apache-2.0 license](https://github.com/hajimehoshi/go-steamworks?tab=Apache-2.0-1-ov-file#readme))
-* [ventil](https://github.com/noxer/ventil) - Valve Key-Value file parser in Go ([MIT license](https://github.com/noxer/ventil?tab=MIT-1-ov-file#readme))
+* [go-steamworks](https://github.com/hajimehoshi/go-steamworks) - A Steamworks SDK binding for Go ([Apache-2.0 license](LICENSES/LICENSE-go-steamworks.txt))
+* [ventil](https://github.com/noxer/ventil) - Valve Key-Value file parser in Go ([MIT license](LICENSES/LICENSE-ventil.txt))
