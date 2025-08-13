@@ -1,0 +1,6 @@
+github.com/hajimehoshi/go-steamworks v0.0.0-20250707080550-ea9c0844b066 h1:2B8n4Bfc52b2nEeYLY/HBWftLTfb85Xyjnn+m1RLLdk=
+github.com/hajimehoshi/go-steamworks v0.0.0-20250707080550-ea9c0844b066/go.mod h1:uH8briHytZKfL1MqTd0zJIrQ+jWvxSmrxxUqRmf55lY=
+github.com/noxer/ventil v0.1.0 h1:Efg5tN5J6x8+Edk/wZedrRmyKyRSNqm5J+l3bHVmjTQ=
+github.com/noxer/ventil v0.1.0/go.mod h1:E17dS/4PiST/ia7PSZGSPSgQZZ3OplgyeLPsARWnHUw=
+golang.org/x/sys v0.33.0 h1:q3i8TbbEz+JRD9ywIRlyRAQbM0qF7hu24q3teo2hbuw=
+golang.org/x/sys v0.33.0/go.mod h1:BJP2sWEmIv4KK5OTEluFJCKSidICx8ciO85XgH3Ak8k=

@@ -1,0 +1,33 @@
+"Configs"
+{
+	"Games"
+	{
+		"Neotokyo; Rebuild"
+		{
+			// Note that we must use forward slashes for this pre-processing file
+			// in order to be compatible with the KeyValues parser used!
+			// The processing will convert them to platform-appropriate slashes for the output.
+			"GameDir"		"%INSTALLDIR%/neo"
+			"Hammer"
+			{
+				"GameData0"		"%INSTALLDIR%/neo/rebuild.fgd"
+				"TextureFormat"		"5"
+				"MapFormat"		"4"
+				"DefaultTextureScale"		"0.250000"
+				"DefaultLightmapScale"		"16"
+				"GameExe"		"%INSTALLDIR%/ntre64.exe"
+				"DefaultSolidEntity"		"func_detail"
+				"DefaultPointEntity"		"info_player_start"
+				"BSP"		"%INSTALLDIR%/bin/x64/vbsp.exe"
+				"Vis"		"%INSTALLDIR%/bin/x64/vvis.exe"
+				"Light"		"%INSTALLDIR%/bin/x64/vrad.exe"
+				"GameExeDir"		"%INSTALLDIR%"
+				"MapDir"		"%INSTALLDIR%/neo/mapsrc"
+				"BSPDir"		"%INSTALLDIR%/neo/maps"
+				"CordonTexture"		"tools/toolsskybox"
+				"MaterialExcludeCount"		"0"
+			}
+		}
+	}
+	"SDKVersion"		"5"
+}
