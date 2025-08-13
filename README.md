@@ -11,7 +11,12 @@ The executable can be run standalone, or as part of a Steam app [InstallScript](
 ## Installation
 Pre-built releases are available at the [Releases page](https://github.com/Rainyan/GoHam/releases).
 
-For use instructions, see [Usage](#Usage).
+## Usage
+* Build the executable
+* Make sure an up-to-date Steamworks SDK `steam_api64.dll` library exists in the same path
+  * More specifically, the Steamworks SDK dll version used should be the same as the one our `go-steamworks` [pinned module version](https://github.com/Rainyan/GoHam/blob/c29f1f3060ec0e354ab82448dfbd7ba38417b26a/go.mod#L6) is targeting, which can be found at the [project README](https://github.com/hajimehoshi/go-steamworks/blob/ea9c0844b066/README.md#steamworks-sdk-version). Assuming commit `ea9c0844b066` in this example but check our go.mod to be sure of the up-to-date version.
+* Run the executable
+* Observe how `GameConfig.txt` was generated, or updated, in the executable folder.
 
 ## Building
 The following is only needed if you wish to build this app from source code.
@@ -30,13 +35,6 @@ CD <this_repo_path>
 go mod tidy
 go build
 ```
-
-## Usage
-* Build the executable
-* Make sure an up-to-date Steamworks SDK `steam_api64.dll` library exists in the same path
-  * More specifically, the Steamworks SDK dll version used should be the same as the one our `go-steamworks` [pinned module version](https://github.com/Rainyan/GoHam/blob/c29f1f3060ec0e354ab82448dfbd7ba38417b26a/go.mod#L6) is targeting, which can be found at the [project README](https://github.com/hajimehoshi/go-steamworks/blob/ea9c0844b066/README.md#steamworks-sdk-version). Assuming commit `ea9c0844b066` in this example but check our go.mod to be sure of the up-to-date version.
-* Run the executable
-* Observe how `GameConfig.txt` was generated, or updated, in the executable folder.
 
 ## Acknowledgements
 This tool uses the following open-source software:
