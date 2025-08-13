@@ -2,6 +2,7 @@ name: Build
 
 on:
   push:
+    branches: [main, master]
   pull_request:
   workflow_dispatch:
   release:
@@ -54,4 +55,5 @@ jobs:
           ls -la
           gh release create latest 'GoHam-dev.zip' --prerelease --title 'Latest Developer Build'
           gh release upload latest 'GoHam-dev.zip' --clobber
+
 
