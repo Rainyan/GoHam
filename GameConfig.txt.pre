@@ -1,3 +1,9 @@
+// Please note that all comments in this pre-config file will be lost from the generated GameConfig!
+
+// This file is in other ways a standard KeyValues GameConfig file,
+// except it contains %VARIABLES% which are parsed by the InitHammerGameConfig app.
+// Currently supported variables are:
+//   %INSTALLDIR% - The full path to where the application is installed, without a trailing slash.
 "Configs"
 {
 	"Games"
