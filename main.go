@@ -19,7 +19,7 @@ import (
 )
 
 //go:embed LICENSES
-var VENDOR_LICENSES embed.FS
+var LICENSES embed.FS
 var SHOW_LICENSE_INFO *bool
 
 // Initializes Steamworks API with the provided Steam AppID.
@@ -132,12 +132,15 @@ func validateCfgFormat(cfgPath string) error {
 }
 
 // Prints third-party software license information to stdout.
-func printThirdPartyLicenses() error {
-	fs.WalkDir(VENDOR_LICENSES, ".", func(path string, d fs.DirEntry, err error) error {
+func printLicenseInfo() error {
+	var thirdPartyLicenses []string
+	var myOwnLicense string
+
+	fs.WalkDir(LICENSES, ".", func(path string, d fs.DirEntry, err error) error {
 		if !d.Type().IsRegular() {
 			return nil
 		}
-		f, err := VENDOR_LICENSES.Open(path)
+		f, err := LICENSES.Open(path)
 		if err != nil {
 			return err
 		}
@@ -146,10 +149,30 @@ func printThirdPartyLicenses() error {
 		if err != nil {
 			return err
 		}
-		fmt.Printf("\n\nLicense text for \"%s\":\n\n%s\n\n", d.Name(), licenseText)
-		fmt.Println("= = = = = = = = = = = = = = = = = = = =")
+
+		output := fmt.Sprintf("\n\nLicense text for \"%s\":\n\n%s\n\n", d.Name(), licenseText)
+		output += "= = = = = = = = = = = = = = = = = = = ="
+
+		isThisAppsOwnLicense := strings.HasSuffix(path, "LICENSE.txt")
+		if isThisAppsOwnLicense {
+			if myOwnLicense != "" {
+				return fmt.Errorf("license data is invalid") // found multiple own licenses??
+			}
+			myOwnLicense = output
+		} else {
+			thirdPartyLicenses = append(thirdPartyLicenses, output)
+		}
+
 		return nil
 	})
+
+	fmt.Printf("This app's license:")
+	fmt.Printf("%s", myOwnLicense)
+	fmt.Println("Licenses of this app's third-party dependencies:")
+	for _, thirdPartyLicense := range thirdPartyLicenses {
+		fmt.Printf("%s", thirdPartyLicense)
+	}
+
 	return nil
 }
 
@@ -158,11 +181,12 @@ func main() {
 	const licenseCmd = "license"
 	SHOW_LICENSE_INFO = flag.Bool(licenseCmd, false, "Show license information and exit.")
 	flag.Parse()
-	fmt.Printf("To see license information, use the command: %s -%s\n", filepath.Base(os.Args[0]), licenseCmd)
 
 	if *SHOW_LICENSE_INFO {
-		printThirdPartyLicenses()
+		printLicenseInfo()
 		return
+	} else {
+		fmt.Printf("To see license information, use the command: %s -%s\n", filepath.Base(os.Args[0]), licenseCmd)
 	}
 
 	const appid = 3172910 // Steam AppID for "Neotokyo; Rebuild"
