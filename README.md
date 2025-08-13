@@ -1,3 +1,45 @@
+> [!IMPORTANT]
+> As it turns out, it appears most if not all tools that read GameConfig files support relative paths.
+> This realisation turns this entire project mostly obsolete, if all the paths your require are resolvable with relative paths.
+>
+> As such, this project will be archived and is no longer maintained.
+> If you need the features of this app for your own projects, feel free to fork of course.
+>
+> For an example GameConfig.txt to use as a base for the relative paths, see below:
+
+```kv
+"Configs"
+{
+    "Games"
+    {
+        "Neotokyo; Rebuild"
+        {
+            "GameDir"        "..\..\neo"
+            "Hammer"
+            {
+                "GameData0"        "..\..\neo\rebuild.fgd"
+                "TextureFormat"        "5"
+                "MapFormat"        "4"
+                "DefaultTextureScale"        "0.250000"
+                "DefaultLightmapScale"        "16"
+                "GameExe"        "..\..\ntre64.exe"
+                "DefaultSolidEntity"        "func_detail"
+                "DefaultPointEntity"        "info_player_start"
+                "BSP"        "vbsp.exe"
+                "Vis"        "vvis.exe"
+                "Light"        "vrad.exe"
+                "GameExeDir"        "..\.."
+                "MapDir"        "..\..\neo\mapsrc"
+                "BSPDir"        "..\..\neo\maps"
+                "CordonTexture"        "tools\toolsskybox"
+                "MaterialExcludeCount"        "0"
+            }
+        }
+    }
+    "SDKVersion"        "5"
+}
+```
+
 # Hammer GameConfig.txt auto-initializer for NT;RE
 
 Source code for building the `InitHammerGameConfig` tool, which initializes the NT;RE Hammer GameConfig.txt file with correct paths for the user.
