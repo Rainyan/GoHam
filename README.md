@@ -88,3 +88,8 @@ go build
 This tool uses the following open-source software:
 * [go-steamworks](https://github.com/hajimehoshi/go-steamworks) - A Steamworks SDK binding for Go ([Apache-2.0 license](LICENSES/LICENSE-go-steamworks.txt))
 * [ventil](https://github.com/noxer/ventil) - Valve Key-Value file parser in Go ([MIT license](LICENSES/LICENSE-ventil.txt))
+
+## License
+This project if [licensed under the MIT license](LICENSES/LICENSE.txt).
+
+You can also find the license files for the third-party dependencies in the [LICENSES folder](LICENSES).
