@@ -25,6 +25,7 @@ Pre-built releases are available to download at the [Releases page](https://gith
 ## Building
 The following is only needed if you wish to build this app from source code.
 ### Requirements
+* A modern version of Git
 * A version of [Golang](https://go.dev/) specified at [go.mod](go.mod#L3)
 * Assuming Windows platform (although this could well be made cross-platform, assuming our tools become Linux compatible at some point)
 * Assuming `steam_api64.dll` located at the same path as the executable. For testing, you can [download the Steamworks SDK](https://partner.steamgames.com/downloads/steamworks_sdk.zip)
@@ -32,7 +33,7 @@ The following is only needed if you wish to build this app from source code.
   * For the NT;RE Steam build, this dll file should already be in place for the Windows build.
 
 ### Build instructions
-This assumes you have Git and Go installed and invokable from your command line as `git` and `go`.
+This assumes you have [Git and Go installed and invokable](#requirements) from your command line as `git` and `go`.
 ```cmd
 git clone <this_repo_url>
 CD <this_repo_path>
