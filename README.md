@@ -20,7 +20,7 @@ Pre-built releases are available to download at the [Releases page](https://gith
   * At the time of writing this, you have to copy-paste them from `steamapps/common/NEOTOKYOREBUILD/bin` to the `x64` folder, but this should be fixed in the Steam release itself.
 * Run the `InitHammerGameConfig.exe` executable.
 * Observe how `GameConfig.txt` was generated from the `GameConfig.txt.pre` file (or its contents updated if it already existed).
-* Run the `hammer.exe` executable in `steamapps/common/NEOTOKYOREBUILD/bin/x64`, and it should now be ready to use with the generated `GameConfig.txt` for Neotokyo mapping.
+* Run the `hammer.exe` executable in `steamapps/common/NEOTOKYOREBUILD/bin/x64`, and it should now be ready to use with the generated `GameConfig.txt` for NT;RE mapping.
 
 ## Building
 The following is only needed if you wish to build this app from source code.
