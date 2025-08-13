@@ -1,6 +1,6 @@
 module InitHammerGameConfig
 
-go 1.25.0
+go 1.24.6
 
 require (
 	github.com/hajimehoshi/go-steamworks v0.0.0-20250707080550-ea9c0844b066
