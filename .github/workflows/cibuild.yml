@@ -1,0 +1,57 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  windows-build:
+    name: Windows x64 release build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.6'
+      - name: Build application
+        run: |
+          go version
+          go mod tidy
+          go build
+      - uses: actions/upload-artifact@v4
+        with:
+          path: '*.exe'
+          if-no-files-found: error
+          retention-days: 1
+
+  create-latest-build:
+    name: Upload latest build
+    needs: windows-build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v5
+      - name: Delete previous latest build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # can fail if prev build doesn't exist
+        continue-on-error: true
+        run: gh release delete latest --cleanup-tag --yes
+      - name: Compress files
+        run: 7z a -tzip -mx=9 'GoHam-dev.zip' '*.exe' '*.pre' README.md LICENSES
+      - name: Create & upload latest build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: false
+        run: |
+          pwd
+          ls -la
+          gh release create latest 'GoHam-dev.zip' --prerelease --title 'Latest Developer Build'
+          gh release upload latest 'GoHam-dev.zip' --clobber
+
