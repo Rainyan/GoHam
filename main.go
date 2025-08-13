@@ -28,6 +28,8 @@ func steamInPlaceInit(appid steamworks.AppId_t) error {
 		if err != nil {
 			return err
 		}
+		// If we made the file, we should also clean it up.
+		// But if it existed originally, don't delete it.
 		defer os.Remove(appidFile)
 		defer wf.Close()
 		n, err := wf.WriteString(strconv.Itoa(int(appid)))
@@ -40,10 +42,11 @@ func steamInPlaceInit(appid steamworks.AppId_t) error {
 		if err != nil {
 			return err
 		}
+		// Re-enter once, because we now have the file set up.
 		return steamInPlaceInit(appid)
 	}
 	defer f.Close()
-
+	// Sanity check; verify file contents match the app ID
 	contents, err := io.ReadAll(f)
 	if err != nil {
 		return err
@@ -104,12 +107,15 @@ func validateCfgFormat(cfgPath string) error {
 		return err
 	}
 
+	// Expecting single backslashes for Windows-style path separators
 	if strings.Contains(string(formattedContents), `\\`) {
 		return fmt.Errorf("invalid formatting: multiple contiguous backslashes found in:\n%s", formattedContents)
 	}
+	// Currently not expecting to see Unix-style path separators
 	if strings.Contains(string(formattedContents), "/") {
 		return fmt.Errorf("invalid formatting: forwardslash but expected backslash found in:\n%s", formattedContents)
 	}
+	// Assuming we have handled all %COMMAND% style tokens, and no other % characters are expected either
 	if strings.Contains(string(formattedContents), "%") {
 		return fmt.Errorf("invalid formatting: stray percent sign(s) (%%) found in:\n%s", formattedContents)
 	}
@@ -117,8 +123,9 @@ func validateCfgFormat(cfgPath string) error {
 	return nil
 }
 
+// Entry point
 func main() {
-	const appid = 3172910 // Neotokyo; Rebuild
+	const appid = 3172910 // Steam AppID for "Neotokyo; Rebuild"
 	const cfgPathWrite = "GameConfig.txt"
 	const cfgPathRead = cfgPathWrite + ".pre"
 
