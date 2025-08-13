@@ -18,6 +18,7 @@ Pre-built releases are available to download at the [Releases page](https://gith
   * More specifically, the Steamworks SDK dll version used should be the same as the one our `go-steamworks` [pinned module version](https://github.com/Rainyan/GoHam/blob/c29f1f3060ec0e354ab82448dfbd7ba38417b26a/go.mod#L6) is targeting, which can be found at the [project README](https://github.com/hajimehoshi/go-steamworks/blob/ea9c0844b066/README.md#steamworks-sdk-version). Assuming commit `ea9c0844b066` in this example, but check our go.mod to be sure of the up-to-date version.
 * Make sure the `base.fgd` and `halflife2.fgd` files exist in the folder `steamapps/common/NEOTOKYOREBUILD/bin/x64`.
   * At the time of writing this, you have to copy-paste them from `steamapps/common/NEOTOKYOREBUILD/bin` to the `x64` folder, but this should be fixed in the Steam release itself.
+* Make sure Steam is running, and you are logged in with an account that has NT;RE installed on the machine.
 * Run the `InitHammerGameConfig.exe` executable.
 * Observe how `GameConfig.txt` was generated from the `GameConfig.txt.pre` file (or its contents updated if it already existed).
 * Run the `hammer.exe` executable in `steamapps/common/NEOTOKYOREBUILD/bin/x64`, and it should now be ready to use with the generated `GameConfig.txt` for NT;RE mapping.
