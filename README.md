@@ -6,7 +6,15 @@ The built executable file (`InitHammerGameConfig.exe`) is intended to be include
 When the executable runs, it assumes to find a `steam_api64.dll` (or `steam_api.dll` for any hypothetical 32-bit build - in which case you'd also need a 32-bit Golang toolchain; probably not worth it)
 Steamworks API library at that same path.
 
+The executable can be run standalone, or as part of a Steam app [InstallScript](https://partner.steamgames.com/doc/sdk/installscripts), to automate Hammer setup for the user upon app installation.
+
+## Installation
+Pre-built releases are available at the [Releases page](https://github.com/Rainyan/GoHam/releases).
+
+For use instructions, see [Usage](#Usage).
+
 ## Building
+The following is only needed if you wish to build this app from source code.
 ### Requirements
 * A version of [Golang](https://go.dev/) specified at [go.mod](go.mod#L3)
 * Assuming Windows platform (although this could well be made cross-platform, assuming our tools become Linux compatible at some point)
